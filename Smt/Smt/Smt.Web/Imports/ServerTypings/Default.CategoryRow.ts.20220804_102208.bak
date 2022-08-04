@@ -1,0 +1,32 @@
+﻿namespace Smt.Default {
+    export interface CategoryRow {
+        CategoryId?: number;
+        Title?: string;
+        RequestList?: number[];
+        ModelList?: number[];
+        BrandList?: number[];
+    }
+
+    export namespace CategoryRow {
+        export const idProperty = 'CategoryId';
+        export const nameProperty = 'Title';
+        export const localTextPrefix = 'Default.Category';
+        export const lookupKey = 'Default.Category';
+
+        export function getLookup(): Q.Lookup<CategoryRow> {
+            return Q.getLookup<CategoryRow>('Default.Category');
+        }
+        export const deletePermission = 'Administration:General';
+        export const insertPermission = 'Administration:General';
+        export const readPermission = 'Administration:General';
+        export const updatePermission = 'Administration:General';
+
+        export declare const enum Fields {
+            CategoryId = "CategoryId",
+            Title = "Title",
+            RequestList = "RequestList",
+            ModelList = "ModelList",
+            BrandList = "BrandList"
+        }
+    }
+}

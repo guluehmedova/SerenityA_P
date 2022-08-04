@@ -1,0 +1,70 @@
+{
+  "RootNamespace": "Smt",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "Restore": {
+    "Exclude": [
+      "/wwwroot/Scripts/serenity/Serenity.CoreLib*.*"
+    ]
+  },
+  "Connections": [
+    {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "brand.Brand",
+          "Identifier": "Brand",
+          "Module": "Default",
+          "PermissionKey": "Brand"
+        },
+        {
+          "Tablename": "brandcat.BrandCategory",
+          "Identifier": "BrandCategory",
+          "Module": "Default",
+          "PermissionKey": "BrandCategory"
+        },
+        {
+          "Tablename": "cat.Category",
+          "Identifier": "Category",
+          "Module": "Default",
+          "PermissionKey": "Category"
+        },
+        {
+          "Tablename": "comfaq.CommonFaq",
+          "Identifier": "CommonFaq",
+          "Module": "Default",
+          "PermissionKey": "CommonFaq"
+        },
+        {
+          "Tablename": "example.Example",
+          "Identifier": "Example",
+          "Module": "Default",
+          "PermissionKey": "Example"
+        },
+        {
+          "Tablename": "model.Model",
+          "Identifier": "Model",
+          "Module": "Default",
+          "PermissionKey": "Model"
+        },
+        {
+          "Tablename": "request.Request",
+          "Identifier": "Request",
+          "Module": "Default",
+          "PermissionKey": "Request"
+        },
+        {
+          "Tablename": "vendor.Vendor",
+          "Identifier": "Vendor",
+          "Module": "Default",
+          "PermissionKey": "Vendor"
+        }
+      ]
+    }
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "6.0.3.0"
+  }
+}

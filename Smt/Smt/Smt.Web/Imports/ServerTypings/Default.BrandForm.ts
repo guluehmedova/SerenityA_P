@@ -2,6 +2,7 @@
     export interface BrandForm {
         Title: Serenity.StringEditor;
         BrandImage: Serenity.ImageUploadEditor;
+        Check: Serenity.BooleanEditor;
         CategoryList: Serenity.LookupEditor;
     }
 
@@ -18,12 +19,14 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.ImageUploadEditor;
-                var w2 = s.LookupEditor;
+                var w2 = s.BooleanEditor;
+                var w3 = s.LookupEditor;
 
                 Q.initFormType(BrandForm, [
                     'Title', w0,
                     'BrandImage', w1,
-                    'CategoryList', w2
+                    'Check', w2,
+                    'CategoryList', w3
                 ]);
             }
         }

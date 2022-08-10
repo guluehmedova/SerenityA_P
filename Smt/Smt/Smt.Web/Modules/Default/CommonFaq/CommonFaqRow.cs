@@ -14,7 +14,7 @@ namespace Smt.Default
     [ModifyPermission("CommonFaq")]
     public sealed class CommonFaqRow : Row<CommonFaqRow.RowFields>, IIdRow, INameRow
     {
-        [DisplayName("Common Faq Id"), Identity, IdProperty]
+        [DisplayName("Common Faq Id"), Identity, IdProperty, Unique]
         public int? CommonFaqId
         {
             get => fields.CommonFaqId[this];

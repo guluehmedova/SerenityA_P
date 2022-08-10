@@ -1,7 +1,7 @@
 ﻿namespace Smt.Default {
     export interface RequestForm {
         Theme: Serenity.StringEditor;
-        RequestImages: Serenity.MultipleImageUploadEditor;
+        RequestImages: Serenity.StringEditor;
         ForwardedTo: Serenity.BooleanEditor;
         Status: Serenity.EnumEditor;
         Date: Serenity.DateEditor;
@@ -24,23 +24,22 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.MultipleImageUploadEditor;
-                var w2 = s.BooleanEditor;
-                var w3 = s.EnumEditor;
-                var w4 = s.DateEditor;
-                var w5 = s.LookupEditor;
+                var w1 = s.BooleanEditor;
+                var w2 = s.EnumEditor;
+                var w3 = s.DateEditor;
+                var w4 = s.LookupEditor;
 
                 Q.initFormType(RequestForm, [
                     'Theme', w0,
-                    'RequestImages', w1,
-                    'ForwardedTo', w2,
-                    'Status', w3,
-                    'Date', w4,
+                    'RequestImages', w0,
+                    'ForwardedTo', w1,
+                    'Status', w2,
+                    'Date', w3,
                     'Text', w0,
-                    'CreationDate', w4,
-                    'ModelId', w5,
-                    'CategoryId', w5,
-                    'BrandId', w5
+                    'CreationDate', w3,
+                    'ModelId', w4,
+                    'CategoryId', w4,
+                    'BrandId', w4
                 ]);
             }
         }

@@ -14,10 +14,17 @@ namespace Smt.Default.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public int CategoryId { get; set; }
-        [EditLink]
+        [EditLink, QuickFilter]
         public string Title { get; set; }
+        public bool Check { get; set; }
         [DisplayName("Brands")]
-        [Width(200), BrandListFormatter]
+        [Width(200), BrandListFormatter, QuickFilter]
         public List<Int32> BrandList { get; set; }
+        [Width(200), RequestListFormatter]
+        [DisplayName("Requests")]
+        public List<Int32> RequestList { get; set; }
+        [DisplayName("Models")]
+        [Width(200), ModelListFormatter]
+        public List<Int32> ModelList { get; set; }
     }
 }

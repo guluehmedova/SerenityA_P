@@ -16,5 +16,6 @@ namespace Smt.Default.Forms
         public string Code { get; set; }
         public string ModelImage { get; set; }
         public int CategoryId { get; set; }
+        public bool Check { get; set; }
     }
 }

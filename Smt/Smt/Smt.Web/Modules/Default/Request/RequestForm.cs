@@ -15,12 +15,15 @@ namespace Smt.Default.Forms
         public string Theme { get; set; }
         public string RequestImages { get; set; }
         public bool ForwardedTo { get; set; }
-        public int Status { get; set; }
+        public Status Status { get; set; }
         public DateTime Date { get; set; }
         public string Text { get; set; }
         public DateTime CreationDate { get; set; }
+        [DisplayName("Model")]
         public int ModelId { get; set; }
+        [DisplayName("Category")]
         public int CategoryId { get; set; }
+        [DisplayName("Brand")]
         public int BrandId { get; set; }
     }
 }

@@ -426,13 +426,13 @@ declare namespace Smt.Default {
         CategoryId?: number;
         BrandTitle?: string;
         BrandBrandImage?: string;
+        BrandCheck?: boolean;
         CategoryTitle?: string;
+        CategoryCheck?: boolean;
     }
     namespace BrandCategoryRow {
         const idProperty = "BrandCategoryId";
         const localTextPrefix = "Default.BrandCategory";
-        const lookupKey = "Default.BrandCategory";
-        function getLookup(): Q.Lookup<BrandCategoryRow>;
         const deletePermission = "BrandCategory";
         const insertPermission = "BrandCategory";
         const readPermission = "BrandCategory";
@@ -443,7 +443,9 @@ declare namespace Smt.Default {
             CategoryId = "CategoryId",
             BrandTitle = "BrandTitle",
             BrandBrandImage = "BrandBrandImage",
-            CategoryTitle = "CategoryTitle"
+            BrandCheck = "BrandCheck",
+            CategoryTitle = "CategoryTitle",
+            CategoryCheck = "CategoryCheck"
         }
     }
 }
@@ -473,6 +475,7 @@ declare namespace Smt.Default {
     interface BrandForm {
         Title: Serenity.StringEditor;
         BrandImage: Serenity.ImageUploadEditor;
+        Check: Serenity.BooleanEditor;
         CategoryList: Serenity.LookupEditor;
     }
     class BrandForm extends Serenity.PrefixedContext {
@@ -486,7 +489,9 @@ declare namespace Smt.Default {
         BrandId?: number;
         Title?: string;
         BrandImage?: string;
+        Check?: boolean;
         CategoryList?: number[];
+        RequestList?: number[];
     }
     namespace BrandRow {
         const idProperty = "BrandId";
@@ -502,7 +507,9 @@ declare namespace Smt.Default {
             BrandId = "BrandId",
             Title = "Title",
             BrandImage = "BrandImage",
-            CategoryList = "CategoryList"
+            Check = "Check",
+            CategoryList = "CategoryList",
+            RequestList = "RequestList"
         }
     }
 }
@@ -513,7 +520,7 @@ declare namespace Smt.Default {
         function Update(request: Serenity.SaveRequest<BrandRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<BrandRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<BrandRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: BrandListRequest, onSuccess?: (response: Serenity.ListResponse<BrandRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Default/Brand/Create",
             Update = "Default/Brand/Update",
@@ -531,6 +538,7 @@ declare namespace Smt.Default {
 declare namespace Smt.Default {
     interface CategoryForm {
         Title: Serenity.StringEditor;
+        Check: Serenity.BooleanEditor;
         BrandList: Serenity.LookupEditor;
     }
     class CategoryForm extends Serenity.PrefixedContext {
@@ -543,7 +551,10 @@ declare namespace Smt.Default {
     interface CategoryRow {
         CategoryId?: number;
         Title?: string;
+        Check?: boolean;
         BrandList?: number[];
+        RequestList?: number[];
+        ModelList?: number[];
     }
     namespace CategoryRow {
         const idProperty = "CategoryId";
@@ -558,7 +569,10 @@ declare namespace Smt.Default {
         const enum Fields {
             CategoryId = "CategoryId",
             Title = "Title",
-            BrandList = "BrandList"
+            Check = "Check",
+            BrandList = "BrandList",
+            RequestList = "RequestList",
+            ModelList = "ModelList"
         }
     }
 }
@@ -569,7 +583,7 @@ declare namespace Smt.Default {
         function Update(request: Serenity.SaveRequest<CategoryRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: CategoryListRequest, onSuccess?: (response: Serenity.ListResponse<CategoryRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Default/Category/Create",
             Update = "Default/Category/Update",
@@ -642,8 +656,9 @@ declare namespace Smt.Default {
     interface ModelForm {
         Title: Serenity.StringEditor;
         Code: Serenity.StringEditor;
-        ModelImage: Serenity.ImageUploadEditor;
+        ModelImage: Serenity.StringEditor;
         CategoryId: Serenity.LookupEditor;
+        Check: Serenity.BooleanEditor;
     }
     class ModelForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -658,7 +673,10 @@ declare namespace Smt.Default {
         Code?: string;
         ModelImage?: string;
         CategoryId?: number;
+        Check?: boolean;
         CategoryTitle?: string;
+        CategoryCheck?: boolean;
+        RequestList?: number[];
     }
     namespace ModelRow {
         const idProperty = "ModelId";
@@ -676,7 +694,10 @@ declare namespace Smt.Default {
             Code = "Code",
             ModelImage = "ModelImage",
             CategoryId = "CategoryId",
-            CategoryTitle = "CategoryTitle"
+            Check = "Check",
+            CategoryTitle = "CategoryTitle",
+            CategoryCheck = "CategoryCheck",
+            RequestList = "RequestList"
         }
     }
 }
@@ -705,7 +726,7 @@ declare namespace Smt.Default {
 declare namespace Smt.Default {
     interface RequestForm {
         Theme: Serenity.StringEditor;
-        RequestImages: Serenity.MultipleImageUploadEditor;
+        RequestImages: Serenity.StringEditor;
         ForwardedTo: Serenity.BooleanEditor;
         Status: Serenity.EnumEditor;
         Date: Serenity.DateEditor;
@@ -738,9 +759,12 @@ declare namespace Smt.Default {
         ModelCode?: string;
         ModelModelImage?: string;
         ModelCategoryId?: number;
+        ModelCheck?: boolean;
         CategoryTitle?: string;
+        CategoryCheck?: boolean;
         BrandTitle?: string;
         BrandBrandImage?: string;
+        BrandCheck?: boolean;
     }
     namespace RequestRow {
         const idProperty = "RequestId";
@@ -768,9 +792,12 @@ declare namespace Smt.Default {
             ModelCode = "ModelCode",
             ModelModelImage = "ModelModelImage",
             ModelCategoryId = "ModelCategoryId",
+            ModelCheck = "ModelCheck",
             CategoryTitle = "CategoryTitle",
+            CategoryCheck = "CategoryCheck",
             BrandTitle = "BrandTitle",
-            BrandBrandImage = "BrandBrandImage"
+            BrandBrandImage = "BrandBrandImage",
+            BrandCheck = "BrandCheck"
         }
     }
 }
@@ -789,14 +816,6 @@ declare namespace Smt.Default {
             Retrieve = "Default/Request/Retrieve",
             List = "Default/Request/List"
         }
-    }
-}
-declare namespace Smt.Default {
-    enum Status {
-        InProcess = 1,
-        Solved = 2,
-        Completed = 3,
-        Rejected = 4
     }
 }
 declare namespace Smt.Default {
@@ -1183,6 +1202,7 @@ declare namespace Smt.Default {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Smt.Default {
@@ -1245,6 +1265,7 @@ declare namespace Smt.Default {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
     }
 }
 declare namespace Smt.Default {
@@ -1378,5 +1399,28 @@ declare namespace Smt.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
+    }
+}
+declare namespace Smt.Default {
+    class ModelListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Smt.Default {
+    enum Status {
+        InProcess = 1,
+        Solved = 2,
+        Completed = 3,
+        Rejected = 4
+    }
+}
+declare namespace Smt.Default {
+    interface BrandListRequest extends Serenity.ListRequest {
+        Categories?: number[];
+    }
+}
+declare namespace Smt.Default {
+    interface CategoryListRequest extends Serenity.ListRequest {
+        Brands?: number[];
     }
 }

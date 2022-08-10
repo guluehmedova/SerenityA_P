@@ -15,9 +15,12 @@
         ModelCode?: string;
         ModelModelImage?: string;
         ModelCategoryId?: number;
+        ModelCheck?: boolean;
         CategoryTitle?: string;
+        CategoryCheck?: boolean;
         BrandTitle?: string;
         BrandBrandImage?: string;
+        BrandCheck?: boolean;
     }
 
     export namespace RequestRow {
@@ -50,9 +53,12 @@
             ModelCode = "ModelCode",
             ModelModelImage = "ModelModelImage",
             ModelCategoryId = "ModelCategoryId",
+            ModelCheck = "ModelCheck",
             CategoryTitle = "CategoryTitle",
+            CategoryCheck = "CategoryCheck",
             BrandTitle = "BrandTitle",
-            BrandBrandImage = "BrandBrandImage"
+            BrandBrandImage = "BrandBrandImage",
+            BrandCheck = "BrandCheck"
         }
     }
 }

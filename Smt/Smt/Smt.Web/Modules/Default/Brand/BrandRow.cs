@@ -16,7 +16,7 @@ namespace Smt.Default
     [LookupScript("Default.Brand")]
     public sealed class BrandRow : Row<BrandRow.RowFields>, IIdRow, INameRow
     {
-        [DisplayName("Brand Id"), Identity, IdProperty]
+        [DisplayName("Brand Id"), Identity, IdProperty, Unique]
         public int? BrandId
         {
             get => fields.BrandId[this];
@@ -37,6 +37,13 @@ namespace Smt.Default
             set => fields.BrandImage[this] = value;
         }
 
+        [DisplayName("Check"), NotNull]
+        public bool? Check
+        {
+            get => fields.Check[this];
+            set => fields.Check[this] = value;
+        }
+
         public BrandRow()
             : base()
         {
@@ -54,13 +61,24 @@ namespace Smt.Default
             get => fields.CategoryList[this];
             set => fields.CategoryList[this] = value;
         }
+        [DisplayName("Requests")]
+        [LookupEditor(typeof(RequestRow), Multiple = true), NotMapped]
+        [LinkingSetRelation(typeof(RequestRow), "BrandId", "RequestId")]
+        public List<Int32> RequestList
+        {
+            get => fields.RequestList[this];
+            set => fields.RequestList[this] = value;
+        }
+
         public class RowFields : RowFieldsBase
         {
             public Int32Field BrandId;
             public StringField Title;
             public StringField BrandImage;
+            public BooleanField Check;
 
             public ListField<Int32> CategoryList;
+            public ListField<Int32> RequestList;
         }
     }
 }

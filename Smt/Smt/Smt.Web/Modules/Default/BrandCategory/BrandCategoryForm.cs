@@ -12,7 +12,9 @@ namespace Smt.Default.Forms
     [BasedOnRow(typeof(BrandCategoryRow), CheckNames = true)]
     public class BrandCategoryForm
     {
+        [DisplayName("Brand")]
         public int BrandId { get; set; }
+        [DisplayName("Category")]
         public int CategoryId { get; set; }
     }
 }

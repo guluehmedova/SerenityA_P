@@ -1,6 +1,7 @@
 ﻿namespace Smt.Default {
     export interface CategoryForm {
         Title: Serenity.StringEditor;
+        Check: Serenity.BooleanEditor;
         BrandList: Serenity.LookupEditor;
     }
 
@@ -16,11 +17,13 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.LookupEditor;
+                var w1 = s.BooleanEditor;
+                var w2 = s.LookupEditor;
 
                 Q.initFormType(CategoryForm, [
                     'Title', w0,
-                    'BrandList', w1
+                    'Check', w1,
+                    'BrandList', w2
                 ]);
             }
         }

@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.IO;
+using Serenity.Data.Mapping;
 
 namespace Smt.Default.Forms
 {
@@ -13,7 +14,11 @@ namespace Smt.Default.Forms
     public class CategoryForm
     {
         public string Title { get; set; }
+        public bool Check { get; set; }
         [DisplayName("Brands")]
-        public List<Int32> BrandList { get; set; } 
+        [Width(200), BrandListFormatter]
+        [LinkingSetRelation(typeof(BrandCategoryRow), "CategoryId", "BrandId")]
+        [LookupEditor(typeof(BrandRow), Multiple = true)]
+        public List<Int32> BrandList { get; set; }
     }
 }

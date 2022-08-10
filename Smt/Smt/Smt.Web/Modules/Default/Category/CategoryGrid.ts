@@ -13,5 +13,20 @@ namespace Smt.Default {
         constructor(container: JQuery) {
             super(container);
         }
+        protected getQuickFilters() {
+            let items = super.getQuickFilters();
+
+            const genreListFilter = Q.first(items, x =>
+                x.field == CategoryRow.Fields.BrandList);
+
+            genreListFilter.handler = h => {
+                const request = (h.request as CategoryListRequest);
+                const values = (h.widget as Serenity.LookupEditor).values;
+                request.Brands = values.map(x => parseInt(x, 10));
+                h.handled = true;
+            };
+
+            return items;
+        }
     }
 }

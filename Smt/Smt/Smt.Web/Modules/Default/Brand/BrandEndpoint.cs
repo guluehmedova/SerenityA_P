@@ -44,14 +44,14 @@ namespace Smt.Default.Endpoints
         }
 
         [HttpPost, AuthorizeList(typeof(MyRow))]
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request,
+        public ListResponse<MyRow> List(IDbConnection connection, BrandListRequest request,
             [FromServices] IBrandListHandler handler)
         {
             return handler.List(connection, request);
         }
 
         [AuthorizeList(typeof(MyRow))]
-        public FileContentResult ListExcel(IDbConnection connection, ListRequest request,
+        public FileContentResult ListExcel(IDbConnection connection, BrandListRequest request,
             [FromServices] IBrandListHandler handler,
             [FromServices] IExcelExporter exporter)
         {

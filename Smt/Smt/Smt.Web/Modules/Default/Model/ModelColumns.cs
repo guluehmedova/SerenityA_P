@@ -16,8 +16,13 @@ namespace Smt.Default.Columns
         public int ModelId { get; set; }
         [EditLink]
         public string Title { get; set; }
+        [QuickFilter]
         public string Code { get; set; }
         public string ModelImage { get; set; }
         public string CategoryTitle { get; set; }
+        public bool Check { get; set; }
+        [DisplayName("Requests")]
+        [Width(200), RequestListFormatter]
+        public List<Int32> RequestList { get; set; }
     }
 }

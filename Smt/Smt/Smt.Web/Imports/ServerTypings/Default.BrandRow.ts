@@ -3,7 +3,9 @@
         BrandId?: number;
         Title?: string;
         BrandImage?: string;
+        Check?: boolean;
         CategoryList?: number[];
+        RequestList?: number[];
     }
 
     export namespace BrandRow {
@@ -24,7 +26,9 @@
             BrandId = "BrandId",
             Title = "Title",
             BrandImage = "BrandImage",
-            CategoryList = "CategoryList"
+            Check = "Check",
+            CategoryList = "CategoryList",
+            RequestList = "RequestList"
         }
     }
 }

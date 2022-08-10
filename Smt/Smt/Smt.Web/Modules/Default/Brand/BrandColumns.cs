@@ -15,10 +15,15 @@ namespace Smt.Default.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public int BrandId { get; set; }
         [EditLink]
+        [QuickFilter]
         public string Title { get; set; }
-        [DisplayName("Image")]
         public string BrandImage { get; set; }
-        [Width(200), CategoryListFormatter]
+        public bool Check { get; set; }
+        [DisplayName("Categories")]
+        [Width(200), CategoryListFormatter, QuickFilter]
         public List<Int32> CategoryList { get; set; }
+        [DisplayName("Requests")]
+        [Width(200), RequestListFormatter]
+        public List<Int32> RequestList { get; set; }
     }
 }

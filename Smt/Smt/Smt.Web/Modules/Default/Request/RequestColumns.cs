@@ -20,11 +20,13 @@ namespace Smt.Default.Columns
         public bool ForwardedTo { get; set; }
         public Status Status { get; set; }
         public DateTime Date { get; set; }
-        [TextAreaEditor(Rows = 12), Width(200)]
         public string Text { get; set; }
         public DateTime CreationDate { get; set; }
+        [QuickFilter]
         public string ModelTitle { get; set; }
+        [QuickFilter]
         public string CategoryTitle { get; set; }
+        [QuickFilter]
         public string BrandTitle { get; set; }
     }
 }

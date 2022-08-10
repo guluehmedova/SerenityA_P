@@ -5,7 +5,10 @@
         Code?: string;
         ModelImage?: string;
         CategoryId?: number;
+        Check?: boolean;
         CategoryTitle?: string;
+        CategoryCheck?: boolean;
+        RequestList?: number[];
     }
 
     export namespace ModelRow {
@@ -28,7 +31,10 @@
             Code = "Code",
             ModelImage = "ModelImage",
             CategoryId = "CategoryId",
-            CategoryTitle = "CategoryTitle"
+            Check = "Check",
+            CategoryTitle = "CategoryTitle",
+            CategoryCheck = "CategoryCheck",
+            RequestList = "RequestList"
         }
     }
 }

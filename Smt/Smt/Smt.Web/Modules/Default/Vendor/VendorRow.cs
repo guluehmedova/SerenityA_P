@@ -14,7 +14,7 @@ namespace Smt.Default
     [ModifyPermission("Vendor")]
     public sealed class VendorRow : Row<VendorRow.RowFields>, IIdRow, INameRow
     {
-        [DisplayName("Vendor Id"), Identity, IdProperty]
+        [DisplayName("Vendor Id"), Identity, IdProperty, Unique]
         public int? VendorId
         {
             get => fields.VendorId[this];

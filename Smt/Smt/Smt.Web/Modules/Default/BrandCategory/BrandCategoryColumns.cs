@@ -14,7 +14,9 @@ namespace Smt.Default.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public int BrandCategoryId { get; set; }
+        [DisplayName("Brand")]
         public string BrandTitle { get; set; }
+        [DisplayName("Category")]
         public string CategoryTitle { get; set; }
     }
 }

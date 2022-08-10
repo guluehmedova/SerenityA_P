@@ -15,10 +15,14 @@ namespace Smt.Default.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public int VendorId { get; set; }
         [EditLink]
+        [QuickFilter]
         public string UserName { get; set; }
+        [QuickFilter]
         public string Email { get; set; }
         public string Password { get; set; }
+        [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
+        [QuickFilter]
         public string Name { get; set; }
         public string UserImage { get; set; }
     }

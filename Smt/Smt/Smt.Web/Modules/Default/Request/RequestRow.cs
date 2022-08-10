@@ -15,7 +15,7 @@ namespace Smt.Default
     [LookupScript("Default.Request")]
     public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
     {
-        [DisplayName("Request Id"), Identity, IdProperty]
+        [DisplayName("Request Id"), Identity, IdProperty, Unique]
         public int? RequestId
         {
             get => fields.RequestId[this];
@@ -29,7 +29,7 @@ namespace Smt.Default
             set => fields.Theme[this] = value;
         }
 
-        [DisplayName("Images"), Size(250), NotNull, MultipleImageUploadEditor(FilenameFormat = "Request/RequestImages/~")]
+        [DisplayName("Request Images"), Size(250), NotNull]
         public string RequestImages
         {
             get => fields.RequestImages[this];
@@ -43,11 +43,11 @@ namespace Smt.Default
             set => fields.ForwardedTo[this] = value;
         }
 
-        [DisplayName("Status"), NotNull, DefaultValue(1)]
+        [DisplayName("Status"), NotNull]
         public Status? Status
         {
             get => (Status?)fields.Status[this];
-            set => fields.Status[this] = (Int32?)value;
+            set => fields.Status[this] = (Int32)value;
         }
 
         [DisplayName("Date")]
@@ -72,7 +72,7 @@ namespace Smt.Default
         }
 
         [DisplayName("Model"), NotNull, ForeignKey("[model].[Model]", "ModelId"), LeftJoin("jModel"), TextualField("ModelTitle")]
-        [LookupEditor(typeof(ModelRow), InplaceAdd = true)]
+        [LookupEditor("Default.Model")]
         public int? ModelId
         {
             get => fields.ModelId[this];
@@ -80,7 +80,7 @@ namespace Smt.Default
         }
 
         [DisplayName("Category"), NotNull, ForeignKey("[cat].[Category]", "CategoryId"), LeftJoin("jCategory"), TextualField("CategoryTitle")]
-        [LookupEditor(typeof(CategoryRow), InplaceAdd = true)]
+        [LookupEditor("Default.Category")]
         public int? CategoryId
         {
             get => fields.CategoryId[this];
@@ -88,7 +88,7 @@ namespace Smt.Default
         }
 
         [DisplayName("Brand"), NotNull, ForeignKey("[brand].[Brand]", "BrandId"), LeftJoin("jBrand"), TextualField("BrandTitle")]
-        [LookupEditor(typeof(BrandRow), InplaceAdd = true)]
+        [LookupEditor("Default.Brand")]
         public int? BrandId
         {
             get => fields.BrandId[this];
@@ -123,11 +123,25 @@ namespace Smt.Default
             set => fields.ModelCategoryId[this] = value;
         }
 
+        [DisplayName("Model Check"), Expression("jModel.[Check]")]
+        public bool? ModelCheck
+        {
+            get => fields.ModelCheck[this];
+            set => fields.ModelCheck[this] = value;
+        }
+
         [DisplayName("Category Title"), Expression("jCategory.[Title]")]
         public string CategoryTitle
         {
             get => fields.CategoryTitle[this];
             set => fields.CategoryTitle[this] = value;
+        }
+
+        [DisplayName("Category Check"), Expression("jCategory.[Check]")]
+        public bool? CategoryCheck
+        {
+            get => fields.CategoryCheck[this];
+            set => fields.CategoryCheck[this] = value;
         }
 
         [DisplayName("Brand Title"), Expression("jBrand.[Title]")]
@@ -142,6 +156,13 @@ namespace Smt.Default
         {
             get => fields.BrandBrandImage[this];
             set => fields.BrandBrandImage[this] = value;
+        }
+
+        [DisplayName("Brand Check"), Expression("jBrand.[Check]")]
+        public bool? BrandCheck
+        {
+            get => fields.BrandCheck[this];
+            set => fields.BrandCheck[this] = value;
         }
 
         public RequestRow()
@@ -172,11 +193,14 @@ namespace Smt.Default
             public StringField ModelCode;
             public StringField ModelModelImage;
             public Int32Field ModelCategoryId;
+            public BooleanField ModelCheck;
 
             public StringField CategoryTitle;
+            public BooleanField CategoryCheck;
 
             public StringField BrandTitle;
             public StringField BrandBrandImage;
+            public BooleanField BrandCheck;
         }
     }
 }

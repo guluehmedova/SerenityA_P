@@ -12,10 +12,9 @@ namespace Smt.Default
     [DisplayName("Brand Category"), InstanceName("Brand Category")]
     [ReadPermission("BrandCategory")]
     [ModifyPermission("BrandCategory")]
-    [LookupScript("Default.BrandCategory")]
     public sealed class BrandCategoryRow : Row<BrandCategoryRow.RowFields>, IIdRow
     {
-        [DisplayName("Brand Category Id"), Identity, IdProperty]
+        [DisplayName("Brand Category Id"), Identity, IdProperty, Unique]
         public int? BrandCategoryId
         {
             get => fields.BrandCategoryId[this];
@@ -50,11 +49,25 @@ namespace Smt.Default
             set => fields.BrandBrandImage[this] = value;
         }
 
+        [DisplayName("Brand Check"), Expression("jBrand.[Check]")]
+        public bool? BrandCheck
+        {
+            get => fields.BrandCheck[this];
+            set => fields.BrandCheck[this] = value;
+        }
+
         [DisplayName("Category Title"), Expression("jCategory.[Title]")]
         public string CategoryTitle
         {
             get => fields.CategoryTitle[this];
             set => fields.CategoryTitle[this] = value;
+        }
+
+        [DisplayName("Category Check"), Expression("jCategory.[Check]")]
+        public bool? CategoryCheck
+        {
+            get => fields.CategoryCheck[this];
+            set => fields.CategoryCheck[this] = value;
         }
 
         public BrandCategoryRow()
@@ -75,8 +88,10 @@ namespace Smt.Default
 
             public StringField BrandTitle;
             public StringField BrandBrandImage;
+            public BooleanField BrandCheck;
 
             public StringField CategoryTitle;
+            public BooleanField CategoryCheck;
         }
     }
 }

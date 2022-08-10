@@ -14,6 +14,8 @@ namespace Smt.Default.Forms
     {
         public string Title { get; set; }
         public string BrandImage { get; set; }
+        public bool Check { get; set; }
+        [DisplayName("Categories"), CategoryListFormatter]
         public List<Int32> CategoryList { get; set; }
     }
 }

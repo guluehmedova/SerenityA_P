@@ -16,7 +16,7 @@ namespace Smt.Default
     [LookupScript("Default.Category")]
     public sealed class CategoryRow : Row<CategoryRow.RowFields>, IIdRow, INameRow
     {
-        [DisplayName("Category Id"), Identity, IdProperty]
+        [DisplayName("Category Id"), Identity, IdProperty, Unique]
         public int? CategoryId
         {
             get => fields.CategoryId[this];
@@ -30,6 +30,13 @@ namespace Smt.Default
             set => fields.Title[this] = value;
         }
 
+        [DisplayName("Check"), NotNull]
+        public bool? Check
+        {
+            get => fields.Check[this];
+            set => fields.Check[this] = value;
+        }
+
         public CategoryRow()
             : base()
         {
@@ -39,6 +46,15 @@ namespace Smt.Default
             : base(fields)
         {
         }
+        [DisplayName("Requests")]
+        [LookupEditor(typeof(RequestRow), Multiple = true), NotMapped]
+        [LinkingSetRelation(typeof(RequestRow), "CategoryId", "RequestId")]
+        public List<Int32> RequestList
+        {
+            get => fields.RequestList[this];
+            set => fields.RequestList[this] = value;
+        }
+
         [DisplayName("Brands")]
         [LookupEditor(typeof(BrandRow), Multiple = true), NotMapped]
         [LinkingSetRelation(typeof(BrandCategoryRow), "CategoryId", "BrandId")]
@@ -47,12 +63,23 @@ namespace Smt.Default
             get => fields.BrandList[this];
             set => fields.BrandList[this] = value;
         }
+        [DisplayName("Models")]
+        [LookupEditor(typeof(ModelRow), Multiple = true), NotMapped]
+        [LinkingSetRelation(typeof(ModelRow), "CategoryId", "ModelId")]
+        public List<Int32> ModelList
+        {
+            get => fields.ModelList[this];
+            set => fields.ModelList[this] = value;
+        }
         public class RowFields : RowFieldsBase
         {
             public Int32Field CategoryId;
             public StringField Title;
+            public BooleanField Check;
 
             public ListField<Int32> BrandList;
+            public ListField<Int32> RequestList;
+            public ListField<Int32> ModelList;
         }
     }
 }

@@ -2,7 +2,10 @@
     export interface CategoryRow {
         CategoryId?: number;
         Title?: string;
+        Check?: boolean;
         BrandList?: number[];
+        RequestList?: number[];
+        ModelList?: number[];
     }
 
     export namespace CategoryRow {
@@ -22,7 +25,10 @@
         export declare const enum Fields {
             CategoryId = "CategoryId",
             Title = "Title",
-            BrandList = "BrandList"
+            Check = "Check",
+            BrandList = "BrandList",
+            RequestList = "RequestList",
+            ModelList = "ModelList"
         }
     }
 }

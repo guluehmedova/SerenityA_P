@@ -5,17 +5,14 @@
         CategoryId?: number;
         BrandTitle?: string;
         BrandBrandImage?: string;
+        BrandCheck?: boolean;
         CategoryTitle?: string;
+        CategoryCheck?: boolean;
     }
 
     export namespace BrandCategoryRow {
         export const idProperty = 'BrandCategoryId';
         export const localTextPrefix = 'Default.BrandCategory';
-        export const lookupKey = 'Default.BrandCategory';
-
-        export function getLookup(): Q.Lookup<BrandCategoryRow> {
-            return Q.getLookup<BrandCategoryRow>('Default.BrandCategory');
-        }
         export const deletePermission = 'BrandCategory';
         export const insertPermission = 'BrandCategory';
         export const readPermission = 'BrandCategory';
@@ -27,7 +24,9 @@
             CategoryId = "CategoryId",
             BrandTitle = "BrandTitle",
             BrandBrandImage = "BrandBrandImage",
-            CategoryTitle = "CategoryTitle"
+            BrandCheck = "BrandCheck",
+            CategoryTitle = "CategoryTitle",
+            CategoryCheck = "CategoryCheck"
         }
     }
 }

@@ -34,6 +34,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Smt.Web/1.0.0": {
         "dependencies": {
+          "Dapper": "2.0.123",
           "FastMember": "1.5.0",
           "FluentMigrator.Runner": "3.3.2",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "6.0.2",

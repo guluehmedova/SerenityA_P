@@ -37,6 +37,12 @@
           "PermissionKey": "CommonFaq"
         },
         {
+          "Tablename": "dModel.DisplayModel",
+          "Identifier": "DisplayModel",
+          "Module": "Default",
+          "PermissionKey": "DisplayModel"
+        },
+        {
           "Tablename": "example.Example",
           "Identifier": "Example",
           "Module": "Default",

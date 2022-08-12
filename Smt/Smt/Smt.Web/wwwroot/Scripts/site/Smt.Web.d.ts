@@ -485,6 +485,11 @@ declare namespace Smt.Default {
     }
 }
 declare namespace Smt.Default {
+    interface BrandListRequest extends Serenity.ListRequest {
+        Categories?: number[];
+    }
+}
+declare namespace Smt.Default {
     interface BrandRow {
         BrandId?: number;
         Title?: string;
@@ -545,6 +550,11 @@ declare namespace Smt.Default {
         static formKey: string;
         private static init;
         constructor(prefix: string);
+    }
+}
+declare namespace Smt.Default {
+    interface CategoryListRequest extends Serenity.ListRequest {
+        Brands?: number[];
     }
 }
 declare namespace Smt.Default {
@@ -644,6 +654,79 @@ declare namespace Smt.Default {
             Delete = "Default/CommonFaq/Delete",
             Retrieve = "Default/CommonFaq/Retrieve",
             List = "Default/CommonFaq/List"
+        }
+    }
+}
+declare namespace Smt.Default {
+    class DisplayModelColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace Smt.Default {
+    interface DisplayModelForm {
+        ModelId: Serenity.IntegerEditor;
+        VendorId: Serenity.IntegerEditor;
+    }
+    class DisplayModelForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Smt.Default {
+    interface DisplayModelRow {
+        DisplayModelId?: number;
+        ModelId?: number;
+        VendorId?: number;
+        ModelTitle?: string;
+        ModelCode?: string;
+        ModelModelImage?: string;
+        ModelCategoryId?: number;
+        ModelCheck?: boolean;
+        VendorUserName?: string;
+        VendorEmail?: string;
+        VendorConfirmPassword?: string;
+        VendorName?: string;
+        VendorUserImage?: string;
+    }
+    namespace DisplayModelRow {
+        const idProperty = "DisplayModelId";
+        const localTextPrefix = "Default.DisplayModel";
+        const deletePermission = "DisplayModel";
+        const insertPermission = "DisplayModel";
+        const readPermission = "DisplayModel";
+        const updatePermission = "DisplayModel";
+        const enum Fields {
+            DisplayModelId = "DisplayModelId",
+            ModelId = "ModelId",
+            VendorId = "VendorId",
+            ModelTitle = "ModelTitle",
+            ModelCode = "ModelCode",
+            ModelModelImage = "ModelModelImage",
+            ModelCategoryId = "ModelCategoryId",
+            ModelCheck = "ModelCheck",
+            VendorUserName = "VendorUserName",
+            VendorEmail = "VendorEmail",
+            VendorConfirmPassword = "VendorConfirmPassword",
+            VendorName = "VendorName",
+            VendorUserImage = "VendorUserImage"
+        }
+    }
+}
+declare namespace Smt.Default {
+    namespace DisplayModelService {
+        const baseUrl = "Default/DisplayModel";
+        function Create(request: Serenity.SaveRequest<DisplayModelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<DisplayModelRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<DisplayModelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<DisplayModelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Default/DisplayModel/Create",
+            Update = "Default/DisplayModel/Update",
+            Delete = "Default/DisplayModel/Delete",
+            Retrieve = "Default/DisplayModel/Retrieve",
+            List = "Default/DisplayModel/List"
         }
     }
 }
@@ -819,6 +902,14 @@ declare namespace Smt.Default {
     }
 }
 declare namespace Smt.Default {
+    enum Status {
+        InProcess = 1,
+        Solved = 2,
+        Completed = 3,
+        Rejected = 4
+    }
+}
+declare namespace Smt.Default {
     class VendorColumns {
         static columnsKey: string;
     }
@@ -847,11 +938,14 @@ declare namespace Smt.Default {
         ConfirmPassword?: string;
         Name?: string;
         UserImage?: string;
+        ModelList?: number[];
     }
     namespace VendorRow {
         const idProperty = "VendorId";
         const nameProperty = "UserName";
         const localTextPrefix = "Default.Vendor";
+        const lookupKey = "Default.Vendor";
+        function getLookup(): Q.Lookup<VendorRow>;
         const deletePermission = "Vendor";
         const insertPermission = "Vendor";
         const readPermission = "Vendor";
@@ -863,7 +957,8 @@ declare namespace Smt.Default {
             Password = "Password",
             ConfirmPassword = "ConfirmPassword",
             Name = "Name",
-            UserImage = "UserImage"
+            UserImage = "UserImage",
+            ModelList = "ModelList"
         }
     }
 }
@@ -1269,6 +1364,11 @@ declare namespace Smt.Default {
     }
 }
 declare namespace Smt.Default {
+    class ModelListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Smt.Default {
     class CommonFaqDialog extends Serenity.EntityDialog<CommonFaqRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -1285,6 +1385,29 @@ declare namespace Smt.Default {
     class CommonFaqGrid extends Serenity.EntityGrid<CommonFaqRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof CommonFaqDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Smt.Default {
+    class DisplayModelDialog extends Serenity.EntityDialog<DisplayModelRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: DisplayModelForm;
+    }
+}
+declare namespace Smt.Default {
+    class DisplayModelGrid extends Serenity.EntityGrid<DisplayModelRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof DisplayModelDialog;
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
@@ -1399,28 +1522,5 @@ declare namespace Smt.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
-    }
-}
-declare namespace Smt.Default {
-    class ModelListFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace Smt.Default {
-    enum Status {
-        InProcess = 1,
-        Solved = 2,
-        Completed = 3,
-        Rejected = 4
-    }
-}
-declare namespace Smt.Default {
-    interface BrandListRequest extends Serenity.ListRequest {
-        Categories?: number[];
-    }
-}
-declare namespace Smt.Default {
-    interface CategoryListRequest extends Serenity.ListRequest {
-        Brands?: number[];
     }
 }

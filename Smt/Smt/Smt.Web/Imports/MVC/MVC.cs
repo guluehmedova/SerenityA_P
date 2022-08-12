@@ -58,6 +58,11 @@ namespace MVC
                 public const string CommonFaqIndex = "~/Modules/Default/CommonFaq/CommonFaqIndex.cshtml";
             }
 
+            public static class DisplayModel
+            {
+                public const string DisplayModelIndex = "~/Modules/Default/DisplayModel/DisplayModelIndex.cshtml";
+            }
+
             public static class Model
             {
                 public const string ModelIndex = "~/Modules/Default/Model/ModelIndex.cshtml";

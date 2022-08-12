@@ -1,0 +1,19 @@
+﻿@using Smt.Web.ViewModels
+@inject Serenity.ITextLocalizer Localizer
+@model DisplayModelsViewModel
+@{
+    ViewData["Title"] = Localizer.Get("Db.Default.DisplayModel.EntityPlural");
+}
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  Vendors
+  </button>
+  <ul class="dropdown-menu">
+	@foreach (var item in Model.Vendors)
+   {
+    <li><a class="dropdown-item" href="#">@item.Name</a></li>
+   }
+  </ul>
+</div>

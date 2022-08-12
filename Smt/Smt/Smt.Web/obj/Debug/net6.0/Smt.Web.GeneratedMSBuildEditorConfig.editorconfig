@@ -51,6 +51,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = TW9kdWxlc1xEZWZhdWx0XENvbW1vbkZhcVxDb21tb25GYXFJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ASUS/Desktop/AdminSmtPanel/Smt/Smt/Smt.Web/Modules/Default/DisplayModel/DisplayModelIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TW9kdWxlc1xEZWZhdWx0XERpc3BsYXlNb2RlbFxEaXNwbGF5TW9kZWxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ASUS/Desktop/AdminSmtPanel/Smt/Smt/Smt.Web/Modules/Default/Model/ModelIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = TW9kdWxlc1xEZWZhdWx0XE1vZGVsXE1vZGVsSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

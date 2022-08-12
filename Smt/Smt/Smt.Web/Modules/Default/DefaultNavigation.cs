@@ -6,3 +6,4 @@ using Serenity.Navigation;
 [assembly: NavigationLink(int.MaxValue, "Default/Model", typeof(MyPages.ModelController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Default/Request", typeof(MyPages.RequestController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Default/Vendor", typeof(MyPages.VendorController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Default/Display Model", typeof(MyPages.DisplayModelController), icon: null)]

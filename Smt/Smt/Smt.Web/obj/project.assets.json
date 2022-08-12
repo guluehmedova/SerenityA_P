@@ -8933,6 +8933,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Dapper >= 2.0.123",
       "FastMember >= 1.5.0",
       "FluentMigrator.Runner >= 3.3.2",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.2",
@@ -8994,6 +8995,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Dapper": {
+            "target": "Package",
+            "version": "[2.0.123, )"
+          },
           "FastMember": {
             "target": "Package",
             "version": "[1.5.0, )"

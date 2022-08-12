@@ -3,6 +3,7 @@ using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 
@@ -12,6 +13,7 @@ namespace Smt.Default
     [DisplayName("Vendor"), InstanceName("Vendor")]
     [ReadPermission("Vendor")]
     [ModifyPermission("Vendor")]
+    [LookupScript("Default.Vendor")]
     public sealed class VendorRow : Row<VendorRow.RowFields>, IIdRow, INameRow
     {
         [DisplayName("Vendor Id"), Identity, IdProperty, Unique]
@@ -72,6 +74,15 @@ namespace Smt.Default
             : base(fields)
         {
         }
+        [DisplayName("Requests")]
+        [LookupEditor(typeof(VendorRow), Multiple = true), NotMapped]
+        [LinkingSetRelation(typeof(RequestRow), "ModelId", "RequestId")]
+        public List<Int32> ModelList
+        {
+            get => fields.ModelList[this];
+            set => fields.ModelList[this] = value;
+        }
+        public static List<VendorRow> ToList { get; internal set; }
 
         public class RowFields : RowFieldsBase
         {
@@ -82,6 +93,8 @@ namespace Smt.Default
             public StringField ConfirmPassword;
             public StringField Name;
             public StringField UserImage;
+
+            public ListField<Int32> ModelList;
         }
     }
 }

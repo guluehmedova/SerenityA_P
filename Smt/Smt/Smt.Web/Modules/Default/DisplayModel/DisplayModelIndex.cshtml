@@ -2,18 +2,57 @@
 @inject Serenity.ITextLocalizer Localizer
 @model DisplayModelsViewModel
 @{
-    ViewData["Title"] = Localizer.Get("Db.Default.DisplayModel.EntityPlural");
+ViewData["Title"] = Localizer.Get("Db.Default.DisplayModel.EntityPlural");
+var count = 0;
 }
 
-
+<div class="container">
+<div class="row">
+<div class="col-lg-12 text-center">
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  Vendors
-  </button>
-  <ul class="dropdown-menu">
-	@foreach (var item in Model.Vendors)
-   {
-    <li><a class="dropdown-item" href="#">@item.Name</a></li>
-   }
-  </ul>
+<button style="width:100%" class="btn btn-info dropdown-toggle mb-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+Vendors
+</button>
+<ul style="width:100%" class="dropdown-menu">
+@foreach (var item in Model.Vendors)
+{
+<li><a class="dropdown-item" href="#">@item.Name</a></li>
+}
+</ul>
 </div>
+</div>
+		
+<div class="col-lg-12">
+<table class="table">
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Title</th>
+<th scope="col">Code</th>
+</tr>
+</thead>
+<tbody>
+@foreach (var item in Model.Models)
+{
+count++;
+<tr>
+<td>@count</td>
+<td>@item.Title</td>
+<td>@item.Code</td>
+<td>
+<div class="form-check">
+<input class="form-check-input" type="checkbox" checked="@item.Check" id="flexCheckDefault">
+<label class="form-check-label" for="flexCheckDefault">
+Display
+</label>
+</div>
+</td>
+</tr>
+}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+

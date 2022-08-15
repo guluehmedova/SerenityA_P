@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -54,6 +55,7 @@ namespace Smt
                 typeof(Serenity.Demo.Northwind.CustomerController).Assembly,
                 typeof(Serenity.Demo.BasicSamples.BasicSamplesController).Assembly,
             }));
+
 
             services.Configure<ConnectionStringOptions>(Configuration.GetSection(ConnectionStringOptions.SectionKey));
             services.Configure<CssBundlingOptions>(Configuration.GetSection(CssBundlingOptions.SectionKey));

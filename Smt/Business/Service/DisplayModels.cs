@@ -1,6 +1,7 @@
 ﻿using Business.IService;
 using Microsoft.AspNetCore.Mvc;
 using Smt.Default;
+using Smt.Web.Modules.Default.DisplayModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace Business.Service
 {
     public class DisplayModels : IDisplayModels
     {
-        public ActionResult Display(ModelRow modelRow)
+        private readonly IDisplayModelsRepository _displayModelsRepository;
+
+        public DisplayModels(IDisplayModelsRepository displayModelsRepository)
         {
-            throw new NotImplementedException();
+            _displayModelsRepository = displayModelsRepository;
         }
     }
 }

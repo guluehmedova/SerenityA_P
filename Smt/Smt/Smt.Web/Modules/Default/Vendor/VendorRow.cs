@@ -74,16 +74,14 @@ namespace Smt.Default
             : base(fields)
         {
         }
-        [DisplayName("Requests")]
-        [LookupEditor(typeof(VendorRow), Multiple = true), NotMapped]
-        [LinkingSetRelation(typeof(RequestRow), "ModelId", "RequestId")]
+        [DisplayName("Models")]
+        [LookupEditor(typeof(ModelRow), Multiple = true), NotMapped]
+        [LinkingSetRelation(typeof(DisplayModelRow), "VendorId", "ModelId")]
         public List<Int32> ModelList
         {
             get => fields.ModelList[this];
             set => fields.ModelList[this] = value;
         }
-        public static List<VendorRow> ToList { get; internal set; }
-
         public class RowFields : RowFieldsBase
         {
             public Int32Field VendorId;

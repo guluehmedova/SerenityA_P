@@ -9,6 +9,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
@@ -22,6 +23,7 @@ using Serenity.Reporting;
 using Serenity.Services;
 using Serenity.Web;
 using Smt.AppServices;
+using Smt.Web.Modules.Default.DisplayModel;
 using System;
 using System.Data.Common;
 using System.IO;
@@ -55,6 +57,8 @@ namespace Smt
                 typeof(Serenity.Demo.Northwind.CustomerController).Assembly,
                 typeof(Serenity.Demo.BasicSamples.BasicSamplesController).Assembly,
             }));
+
+            services.AddSingleton<IDisplayModelsRepository, DisplayModelsRepository>();
 
 
             services.Configure<ConnectionStringOptions>(Configuration.GetSection(ConnectionStringOptions.SectionKey));

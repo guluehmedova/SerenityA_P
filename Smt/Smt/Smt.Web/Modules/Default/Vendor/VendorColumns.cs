@@ -20,10 +20,10 @@ namespace Smt.Default.Columns
         [QuickFilter]
         public string Email { get; set; }
         public string Password { get; set; }
-        [DisplayName("Confirm Password")]
-        public string ConfirmPassword { get; set; }
         [QuickFilter]
         public string Name { get; set; }
         public string UserImage { get; set; }
+        [Width(200), ModelListFormatter]
+        public List<Int32> ModelList { get; set; }
     }
 }

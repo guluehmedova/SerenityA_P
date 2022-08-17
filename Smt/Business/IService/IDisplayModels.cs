@@ -10,6 +10,5 @@ namespace Business.IService
 {
     public interface IDisplayModels
     {
-        public ActionResult Display(ModelRow modelRow);
     }
 }

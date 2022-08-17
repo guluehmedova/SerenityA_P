@@ -1464,6 +1464,11 @@ declare namespace Smt.Default {
     }
 }
 declare namespace Smt.Default {
+    class ModelListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace Smt.Default {
     class VendorDialog extends Serenity.EntityDialog<VendorRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
